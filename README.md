@@ -28,7 +28,7 @@ Além disso, é necessário ter um servidor SQL Server disponível e criar um ba
 
 2. Certifique-se de ter os requisitos mencionados acima instalados.
 
-3. Execute o arquivo "propostas_feegow v2.py" em um ambiente Python.
+3. Execute o arquivo "api_random.py" em um ambiente Python.
 
 4. Os dados serão extraídos da API Random User e inseridos no banco de dados.
 
