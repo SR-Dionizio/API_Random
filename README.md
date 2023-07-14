@@ -1,4 +1,3 @@
-```markdown
 # API Random
 
 Este é um projeto que extrai dados aleatórios de uma API e os insere em um banco de dados SQL Server.
@@ -16,7 +15,7 @@ Este é um projeto que extrai dados aleatórios de uma API e os insere em um ban
 1. Clone o repositório:
 
 ```shell
-git clone https://github.com/SR-Dionizio/api-random.git
+git clone https://github.com/SR-Dionizio/API_Random.git
 ```
 
 2. Instale as dependências:
@@ -41,4 +40,4 @@ Isso irá extrair os dados aleatórios da API e inseri-los/atualizá-los no banc
 
 ## Contribuições
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
