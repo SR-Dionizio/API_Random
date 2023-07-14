@@ -41,4 +41,4 @@ Isso irá extrair os dados aleatórios da API e inseri-los/atualizá-los no banc
 
 ## Contribuições
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request
