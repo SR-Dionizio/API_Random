@@ -34,18 +34,28 @@ class RandomAPIData:
         print('Dados extraídos com sucesso')
 
     def insert_db(self):
-        print("Iniciando a inserção dos dados no banco")
+        print("Iniciando a inserção/atualização dos dados no banco")
         conn = pyodbc.connect('Driver={SQL Server};Server=DANIEL;Database=Clientes;Trusted_Connection=yes;')
         cursor = conn.cursor()
 
         for row in self.dados.itertuples(index=False):
-            values = ','.join([f"'{str(value)}'" for value in row])
-            insert_query = f"INSERT INTO Clientes VALUES ({values});"
-            cursor.execute(insert_query)
+            cpf = row[0]
+            select_query = f"SELECT COUNT(*) FROM Clientes WHERE CPF='{cpf}'"
+            cursor.execute(select_query)
+            row_count = cursor.fetchone()[0]
+
+            if row_count > 0:
+                update_query = f"UPDATE Clientes SET Genero='{row[1]}', Nome='{row[2]}', Endereço='{row[3]}', Numero_casa='{row[4]}', Cidade='{row[5]}', Estado='{row[6]}', País='{row[7]}', Cep='{row[8]}', email='{row[9]}', Nascimento='{row[10]}', Idade='{row[11]}', Telefone='{row[12]}' WHERE CPF='{cpf}'"
+                cursor.execute(update_query)
+            else:
+                values = ','.join([f"'{str(value)}'" for value in row])
+                insert_query = f"INSERT INTO Clientes VALUES ({values});"
+                cursor.execute(insert_query)
+
             conn.commit()
 
         conn.close()
-        print("Dados inseridos no banco com sucesso")
+        print("Dados inseridos/atualizados no banco com sucesso")
 
 # Utilizando a classe RandomAPIData
 api_data = RandomAPIData()
