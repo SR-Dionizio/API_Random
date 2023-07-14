@@ -1,58 +1,44 @@
-# Documentação para o Código
+# Documentação da API Random
 
-O código fornecido é um script Python que extrai dados da API Random User e os insere em um banco de dados SQL Server usando pyodbc.
+## Introdução
 
-## Explicação do Código
+A API Random é um projeto que extrai dados aleatórios da API Random User e os insere em um banco de dados SQL Server. Esta documentação fornece informações detalhadas sobre o funcionamento da API Random, incluindo requisitos, instalação, configuração e uso.
 
-O código consiste em duas funções: `api_random()` e `insert_db()`. Aqui está uma explicação de cada função:
+## Requisitos
 
-### `api_random()`
+Para executar a API Random, você precisará dos seguintes requisitos:
 
-Esta função realiza as seguintes etapas:
+- Python 3.x
+- Bibliotecas: Pandas, Requests, PyODBC
+- SQL Server
 
-1. Importa as bibliotecas necessárias: `pandas`, `requests` e `pyodbc`.
-2. Define um DataFrame vazio chamado `dados` para armazenar os dados extraídos.
-3. Define uma variável `contador` para acompanhar o número da linha no DataFrame.
-4. Constrói a URL da API para solicitar dados de 500 usuários brasileiros.
-5. Envia uma solicitação GET para a URL da API e recupera a resposta.
-6. Analisa os dados JSON da resposta.
-7. Itera sobre cada usuário na resposta e extrai informações relevantes, como CPF, gênero, nome, endereço, e-mail, etc.
-8. Adiciona os dados extraídos ao DataFrame `dados`.
-9. Imprime uma mensagem de sucesso após extrair os dados.
+## Instalação
 
-### `insert_db()`
+1. Clone o repositório da API Random:
 
-Esta função realiza as seguintes etapas:
+```shell
+git clone https://github.com/SR-Dionizio/API_Random.git
+```
 
-1. Importa as bibliotecas necessárias: `pandas` e `pyodbc`.
-2. Estabelece uma conexão com o banco de dados SQL Server usando a biblioteca `pyodbc`.
-3. Cria um objeto de cursor para executar consultas SQL.
-4. Itera sobre cada linha do DataFrame `dados`.
-5. Constrói uma consulta SQL de inserção para cada linha de dados e a executa usando o cursor.
-6. Confirma as alterações no banco de dados.
-7. Fecha a conexão com o banco de dados.
-8. Imprime uma mensagem de sucesso após inserir os dados.
+2. Instale as bibliotecas necessárias:
 
-### Execução Principal
+```shell
+pip install pandas requests pyodbc
+```
 
-A seção de execução principal do código chama a função `api_random()` para extrair dados da API e armazená-los no DataFrame `dados`. Em seguida, chama a função `insert_db()` para inserir os dados extraídos no banco de dados SQL Server.
+## Configuração
 
-## Dependências
-
-O código requer as seguintes dependências:
-
-- pandas: Usado para criar e manipular DataFrames.
-- requests: Usado para enviar solicitações HTTP para a API e recuperar a resposta.
-- pyodbc: Usado para estabelecer uma conexão com o banco de dados SQL Server e executar consultas SQL.
-
-Certifique-se de que essas bibliotecas estejam instaladas antes de executar o código.
+1. Abra o arquivo `api_random.py` no diretório do projeto.
+2. Na seção de configuração, você encontrará o código para a conexão com o banco de dados SQL Server.
+3. Verifique o driver do ODBC adequado para a sua instalação do SQL Server.
+4. Edite a linha `conn = pyodbc.connect('Driver={SQL Server};Server=SEU_SERVER;Database=Clientes;Trusted_Connection=yes;')` com as informações corretas do seu servidor SQL.
 
 ## Uso
 
-Para usar o código:
-
-1. Certifique-se de que as dependências necessárias estejam instaladas.
-2. Configure um banco de dados SQL Server com uma tabela chamada `Clientes` que corresponda às colunas especificadas no código.
-3. Modifique a string de conexão na função `insert_db()` para corresponder à configuração do seu banco de dados.
-4. Execute o código e ele extrairá dados da API e os inserirá no banco de dados.
-5. O código imprimirá mensagens indicando o progresso e o sucesso dos processos de extração e inserção.
+1. Execute o arquivo `api_random.py` para iniciar o processo de extração e inserção dos dados na API Random.
+2. O script extrairá dados aleatórios da API Random User e os armazenará em um DataFrame do Pandas.
+3. Em seguida, o script se conectará ao banco de dados SQL Server usando a biblioteca PyODBC.
+4. Para cada linha do DataFrame, o script verificará se o CPF já existe no banco de dados.
+5. Se o CPF já existir, os dados serão atualizados no banco de dados.
+6. Caso contrário, uma nova linha será inserida com os dados da API.
+7. Ao finalizar a inserção/atualização dos dados, a conexão com o banco de dados será fechada.
