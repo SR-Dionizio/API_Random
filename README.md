@@ -1,41 +1,44 @@
-# Random User API - Extração e Inserção de Dados em Banco de Dados
+```markdown
+# API Random
 
-Este é um projeto simples que utiliza a API Random User para extrair dados de usuários aleatórios e inseri-los em um banco de dados SQL Server.
+Este é um projeto que extrai dados aleatórios de uma API e os insere em um banco de dados SQL Server.
 
-## Descrição
+## Pré-requisitos
 
-O objetivo deste projeto é demonstrar como extrair dados da API Random User e inseri-los em um banco de dados utilizando a biblioteca pandas para manipulação de dados e a biblioteca pyodbc para a conexão com o banco de dados SQL Server.
+- Python 3.x
+- Pandas
+- Requests
+- PyODBC
+- SQL Server
 
-O projeto é dividido em duas funções principais:
+## Instalação
 
-1. **api_random():** Esta função faz uma requisição para a API Random User e extrai os dados necessários. Em seguida, os dados são armazenados em um DataFrame do pandas.
+1. Clone o repositório:
 
-2. **insert_db():** Esta função estabelece uma conexão com o banco de dados SQL Server e insere os dados do DataFrame na tabela "Clientes". É utilizado um cursor para executar as consultas SQL.
+```shell
+git clone https://github.com/SR-Dionizio/api-random.git
+```
 
-## Requisitos
+2. Instale as dependências:
 
-Antes de executar o código, certifique-se de ter as seguintes bibliotecas instaladas:
+```shell
+pip install pandas requests pyodbc
+```
 
-- pandas
-- requests
-- pyodbc
+## Uso
 
-Além disso, é necessário ter um servidor SQL Server disponível e criar um banco de dados chamado "Clientes" com uma tabela vazia chamada "Clientes". Certifique-se de configurar corretamente a conexão com o banco de dados no código.
+1. Configure a conexão com o banco de dados SQL Server no arquivo `api_random.py`:
+   - Verifique o driver do ODBC adequado para a sua instalação do SQL Server.
+   - Edite a linha `conn = pyodbc.connect('Driver={SQL Server};Server=SEU_SERVER;Database=Clientes;Trusted_Connection=yes;')` com as informações corretas.
 
-## Como executar
+2. Execute o arquivo `api_random.py`:
 
-1. Clone o repositório para o seu ambiente local.
+```shell
+python api_random.py
+```
 
-2. Certifique-se de ter os requisitos mencionados acima instalados.
+Isso irá extrair os dados aleatórios da API e inseri-los/atualizá-los no banco de dados.
 
-3. Execute o arquivo "api_random.py" em um ambiente Python.
+## Contribuições
 
-4. Os dados serão extraídos da API Random User e inseridos no banco de dados.
-
-## Contribuição
-
-Contribuições são bem-vindas! Se você tiver alguma sugestão ou melhoria para este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.
-
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
